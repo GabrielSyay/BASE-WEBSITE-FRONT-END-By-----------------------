@@ -1,0 +1,37 @@
+/* 
+MIXINS BASICOS PARA RESPONSIVIDADE:
+ABAIXO, REGULE OS VALORES DE CADA TAMANHO DE TELA:
+*/
+
+$template-TV: 1440px;
+$template-desktop:1360px;
+$template-Tablet: 1024px;
+$template-Mobile: 768px;
+$template-Mobile-S: 480px;
+
+/* ======================== */
+
+@mixin responsive($size) {
+
+    /*
+        MEDIA QUERIES
+        ABAIXO, REGULE OS VALORES DE CADA TAMANHO DE TELA:
+    */
+    
+    @if $size == TV {
+        @media (max-width: $template-TV) { @content; }
+    }
+    @else if $size == desktop {
+        @media (max-width: $template-Desktop) and (min-width: $template-Tablet) { @content; }
+    }
+    @else if $size == tablet {
+        @media (max-width: $template-Tablet) and (min-width: $template-Mobile) { @content; }
+    }
+    @else if $size == mobile {
+        @media (max-width: $template-Mobile) and (min-width: $template-Mobile-S) { @content; }
+    }
+    @else if $size == mobile-S {
+        @media (max-width: $template-Mobile-S) { @content; }
+    }
+
+}
