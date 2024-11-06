@@ -1,0 +1,11 @@
+// IMPORTANDO OS ARQUIVOS SCSS:
+@import "_colors-main";
+@import "_functions-main";
+@import "_tipography-main";
+
+h1 {
+    @include font-template(h1, desktop);
+}
+
+
+

@@ -1,0 +1,81 @@
+/* 
+>> TAMANHOS DE TEXTO 
+>> IMPORTANDO FONTS
+>> TEMPLATES DE TEXTO
+*/
+
+//Roboto-Regular
+@font-face {
+  // Para Titulos:
+  font-family: 'Roboto-Regular';
+  src: url('../FONTS/font-title/Roboto-Regular.ttf') format('truetype');
+}
+
+//MontSerrat
+@font-face {
+  // Para Textos:
+  font-family: 'MontSerrat-Regular';
+  src: url('../FONTS/font-title/Roboto-Regular.ttf') format('truetype');
+}
+
+/* Para Titulos */
+@mixin font-template($size, $device: desktop) {
+    font-family: 'Roboto-Regular';
+    font-weight: 500;
+    font-style: normal;
+
+
+    /* PARA H1 */
+    @if $size == h1 and $device == desktop {
+        font-size: 3.5rem;
+        line-height: 100%;
+    }@else if $size == h1 and $device == mobile {
+        font-size: 2.5rem;
+        line-height: 100%;
+    }
+
+    /* PARA H2 */
+    @if $size == h2 and $device == desktop {
+        font-size: 2.5rem;
+        line-height: 100%;
+    }@else if $size == h2 and $device == mobile {
+        font-size: 2rem;
+        line-height: 100%;
+    }
+
+    /* PARA H3 */
+    @if $size == h3 and $device == desktop {
+        font-size: 1.5rem;
+        line-height: 100%;
+    }@else if $size == h3 and $device == mobile {
+        font-size: 1.5rem;
+        line-height: 100%;
+    }
+}
+
+/* Para Textos */
+@mixin typeface-p($size, $device: desktop) {
+    font-family: 'MontSerrat-Regular';
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  
+
+    /* PARA P1 */
+    @if $size == p1 and $device == desktop {
+      font-size: 1.25rem;
+      line-height: 150%;
+    }@else if $size == p1 and $device == mobile {
+      font-size: 1.1rem;
+      line-height: 150%;
+    }
+  
+    /* PARA P2 */
+    @if $size == p2 and $device == desktop {
+      font-size: 1.1rem;
+      line-height: 150%;
+    }@else if $size == p2 and $device == mobile {
+      font-size: 1rem;
+      line-height: 150%;
+    }
+}
