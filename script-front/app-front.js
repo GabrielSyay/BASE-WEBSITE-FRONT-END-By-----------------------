@@ -1,42 +1,40 @@
 
-// Função para abrir e fechar o menu
-function toggleMenu(element) {
-    // Obter o elemento do menu que está logo após o elemento clicado
-    const menu = element.nextElementSibling;
-    
-    // Verificar se o menu já está aberto
-    const isOpen = menu.classList.contains('open');
-  
-    // Fechar o menu se já estiver aberto
-    if (isOpen) {
-      // Remover a classe 'open' do menu
-      menu.classList.remove('open');
-      // Definir a altura do menu como 0 para fechá-lo
-      menu.style.height = '0';
-    } else {
-      // Abrir o menu
-      // Adicionar a classe 'open' ao menu
-      menu.classList.add('open');
-      // Definir a altura do menu com base no seu conteúdo
-      menu.style.height = menu.scrollHeight + 'px';
+/**
+ * Função para abrir e fechar um menu com base nas classes especificadas.
+ * 
+ * @param {String} toggleClass - Classe do elemento que abre o menu.
+ * @param {String} closeClass - Classe do elemento que fecha o menu.
+ * @param {String} menuClass - Classe do menu que será aberto ou fechado.
+ */
+
+function toggleMenu(toggleClass, closeClass, menuClass) {
+  // Seleciona os elementos com as classes especificadas
+  const toggleElement = document.querySelector(`.${toggleClass}`);
+  const closeElement = document.querySelector(`.${closeClass}`);
+  const menuElement = document.querySelector(`.${menuClass}`);
+
+  // Adiciona evento de clique no elemento que abre o menu
+  toggleElement.addEventListener('click', () => {
+    // Abre o menu
+    menuElement.classList.add('open');
+    console.log('abriu');
+  });
+
+  // Adiciona evento de clique no elemento que fecha o menu
+  closeElement.addEventListener('click', () => {
+    // Fecha o menu
+    menuElement.classList.remove('open');
+  });
+
+  // Adiciona evento de clique fora do escopo do menu
+  document.addEventListener('click', (event) => {
+    // Verifica se o clique foi fora do escopo do menu
+    if (!menuElement.contains(event.target) && !toggleElement.contains(event.target)) {
+      // Fecha o menu
+      menuElement.classList.remove('open');
     }
-  
-    // Adicionar um ouvinte de evento de clique ao documento
-    // para fechar o menu se o usuário clicar fora dele
-    document.addEventListener('click', event => {
-      // Verificar se o elemento clicado está fora do menu
-      if (!event.target.closest('.menu') && isOpen) {
-        // Chamar a função toggleMenu novamente para fechar o menu
-        toggleMenu(element);
-      }
-    });
+  });
 }
 
-// Adicionar um ouvinte de evento de clique ao documento para fechar o menu
-document.addEventListener('click', event => {
-  // Verificar se o elemento clicado estava dentro do menu
-  if (event.target.closest('.menu')) {
-    // Chamar a função toggleMenu para fechar o menu
-    toggleMenu(event.target);
-  }
-});
+// Exemplo de uso:
+toggleMenu('menu', 'close', 'labelMenu');

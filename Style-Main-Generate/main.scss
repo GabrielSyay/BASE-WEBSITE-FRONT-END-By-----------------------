@@ -3,9 +3,35 @@
 @import "_functions-main";
 @import "_tipography-main";
 
-h1 {
-    @include font-template(h1, desktop);
+.labelMenu {
+    margin: auto;
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+
+    .close {
+        padding: .5rem;
+
+        &:hover {
+            transition: all .5s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10%;
+            margin: .5rem;
+            cursor: pointer;
+            cursor: pointer;
+            font-size: 1.3rem;
+        }
+    }
 }
 
 
+.labelMenu.open {
+    display: flex;
+}
 
